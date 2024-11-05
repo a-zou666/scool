@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+#pragma GCC optimize(2)
+using namespace std;
+typedef long long ll;
+ll pd(ll n,ll x){
+    ll a=n,b,c,ans=0;
+    while(a!=0){
+        b=a%10;
+        a/=10;
+        if(b==x) ans++;
+    }
+    return ans;
+}
+void solve(){
+	ll n,x,sum=0;
+    cin>>n>>x;
+    for(ll i=1;i<=n;i++){
+        sum+=pd(i,x);
+    }
+    cout<<sum;
+} 
+
+signed main(){
+	std::ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	solve(); 
+	return 0;
+}
