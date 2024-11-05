@@ -1,26 +1,23 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
-int n,p,flag=0,ans;
 int lowbit(int x)  // 返回末尾的1
 {
     int r=0;
-    while(x){
+    while(x!=0){
         r++;
         x-=x&-x;
     }
     return r;
 }
-int main()
-{
+int main(){
+    int n,p,ans=-1;
     cin>>n>>p;
     for(int i=1;;i++){
-        if(n-i*p<i) break;
-        if(lowbit(n-i*p)>i) continue;
+        if(i>n-p*i) break;
+        else if(i<lowbit(n-p*i)) continue;
         ans=i;
-        flag=1;
         break;
     }
-    if(flag) cout<<ans;
-    else cout<<"-1";
+    cout<<ans;
     return 0;
 }
