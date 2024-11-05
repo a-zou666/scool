@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+void solve(){
+    ll n,x,s=0;
+    cin>>n>>x;
+    ll p=n-2;
+    if(n==1||n==2) s=1;
+    else if(p%x!=0) s=p/x+2;
+    else s=p/x+1;
+    cout<<s<<"\n";
+    
+    
+}
+signed main(){
+    std::ios::sync_with_stdio(false);
+    cin.tie(0);
+    ll t;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+}
