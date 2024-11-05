@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+#pragma GCC optimize(2)
+using namespace std;
+typedef long long ll;
+void solve(){
+    ll l1,r1,l2,r2,max=-1;
+    cin>>l1>>r1>>l2>>r2;
+    for(ll i=l1;i<=r1;i++){
+        for(ll j=l2;j<=r2;j++){
+            ll x=i+j;
+            ll a=x,b;
+            while(a>0){
+                b=a%10;
+                if(max<b) max=b;
+                if(max==9) break;
+                a/=10;
+            }
+            if(max==9) break;
+        }
+        if(max==9) break;
+    }
+    cout<<max<<"\n";
+    
+}
+signed main(){
+    std::ios::sync_with_stdio(false);
+    cin.tie(0);
+    ll t;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+}
