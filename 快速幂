@@ -1,0 +1,17 @@
+
+#include<iostream>
+using namespace std;
+int main(){
+	int a,n;
+	cin>>a>>n;
+	int r=1;
+	while(n!=0){
+		if(n%2==1){//n%2==1可以转换为位运算n&1==1
+			r=r*a;
+		}
+		a*=a;
+		n=n>>1;//同时，n>>1等同于n/2(向下取整)
+	}
+	cout<<r;
+	return 0;
+}
