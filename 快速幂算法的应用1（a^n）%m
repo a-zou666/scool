@@ -1,0 +1,15 @@
+原理：（a*b）mod m=((a mod m)*(b mod m))mod m
+#include<iostream>
+using namespace std;
+int main(){
+  int a,n,m;
+  cin>>a.>n>>m;
+  int r=1;
+  a=a%m;
+  while(n!=0){
+    if(n&1==1) r=(r*a)%m;
+    a=(a*a)%m;
+    n=n>>1;
+  }
+  cout<<r;
+}
