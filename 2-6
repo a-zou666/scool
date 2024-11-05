@@ -1,0 +1,15 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main(){
+    int x,y,t=0,a[4];
+    cin>>x>>y;
+    a[1]=a[2]=a[3]=y;
+    while(a[1]<x||a[2]<x||a[3]<x){
+        t++;
+        sort(a+1,a+4);
+        a[1]=a[2]+a[3]-1;
+    }
+    cout<<t;
+    return 0;
+}
