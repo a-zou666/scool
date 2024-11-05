@@ -1,0 +1,29 @@
+洛谷28赛
+断章取义，字符串的查找与删除
+思路：替换，删除，计数
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t, sum = 0;
+    cin >> t;  
+    cin.ignore(); 
+    
+    string s, x = "not",q="p";
+    getline(cin, s);  
+    while(s.find(x)!=string::npos){
+	    size_t pos;
+	    while ((pos = s.find(x)) != string::npos) {
+	        s.replace(pos, x.length(),"p");
+	    }
+	    size_t poi;
+		while((poi=s.find(q))!=string::npos){
+			s.erase(poi,q.length());
+		}
+		sum++;
+	}
+    cout << s << endl;
+    cout << sum << endl;
+
+    return 0;
+}
