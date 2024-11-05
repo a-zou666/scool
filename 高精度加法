@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> add(vector<int>&c,vector<int>&d){
+    if(c.size()<d.size()) return add(d,c);
+    int t=0;
+    vector<int>p;
+    for(int i=0;i<c.size();i++){
+        t+=c[i];
+        if(i<d.size()) t+=d[i];
+        p.push_back(t%10);
+        t/=10;
+    }
+    if(t) p.push_back(t);
+    return p;
+    
+}
+int main(){
+	string a,b;
+	cin>>a>>b;
+	vector<int>c,d;
+	for(int i=a.size()-1;i>=0;i--) c.push_back(a[i]-'0');
+	for(int i=b.size()-1;i>=0;i--) d.push_back(b[i]-'0');
+	auto e=add(c,d);
+	for(int i=e.size()-1;i>=0;i--) cout<<e[i];
+	cout<<endl;
+	return 0;
+}
