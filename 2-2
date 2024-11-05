@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int t;
+    cin >> t;
+    while(t--){
+        string n;
+        cin>>n;
+        int a=10,b=0;
+        for(int i=0;i<n.size();i++){
+            int p=n[i]-'0';
+            if(p<a){
+                a=p;
+                b=i;
+            }
+        }
+        string x,y;
+        x=n.substr(b);
+        y=n.substr(0,b);
+        cout<<x+y;
+        cout<<endl;
+    }
+    return 0;
+}
