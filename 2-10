@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long double ll;
+int main(){
+    std::ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    ll w0,w,m;
+    cin>>w0>>w>>m;
+    ll l=0,r=10;
+    while(r-l>=0.0001){
+        ll mid=(l+r)/2;
+        if((pow(1.0/(1.0+mid),m)>=1-w0/w*mid)) r=mid;
+        else l=mid;
+    }
+    printf("%.1Lf",l*100.0);
+    return 0;
+}
