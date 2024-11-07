@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int N=1e6+100;
+ll a[N],b[N];
+int main(){
+    std::ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    ll n,m;
+    cin>>m>>n;
+    for(ll i=1;i<=m;i++) cin>>a[i];
+    for(ll i=1;i<=n;i++) cin>>b[i];
+    sort(a+1,a+m+1);
+    int sum=0;
+    for(ll i=1;i<=n;i++){
+        ll l=0,r=m+1;
+        while(l<r){
+            ll mid=(l+r)>>1;
+            if(a[mid]<=b[i]) l=mid+1;
+            else r=mid;
+        }
+        if(b[i]<=a[1]) sum+=abs(a[1]-b[i]);
+        else sum+=min(abs(a[l-1]-b[i]),abs(a[l]-b[i]));
+    }
+    cout<<sum;
+    return 0;
+}
