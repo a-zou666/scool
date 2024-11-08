@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int N = 1e6+10;
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    
+    ll t, n;
+    cin >> t;
+    
+    while(t--){
+        ll a[N];
+        cin >> n;
+        for(ll i=1; i<=n; i++) cin >> a[i];
+        ll mlen = 1; 
+        ll i = 1;
+        while(i <= n){
+            ll ans = 0;
+            while(i < n && a[i+1] < a[i]){
+                ans++;
+                i++;
+            }
+            
+            while(i < n && a[i+1] > a[i]){
+                ans++;
+                i++;
+            }
+            
+            if(ans + 1 > mlen){
+                mlen = ans + 1;
+            }
+            
+            if(ans == 0)i++;
+        }
+        cout << mlen << "\n";
+    }
+    return 0;
+}
