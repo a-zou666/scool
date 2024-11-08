@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int N=1e6+10;
+int a[N];
+ll m,n,k;
+bool check(ll x){
+    ll ant=0;
+    for(ll i=1;i<=n;i++){
+        ant+=(a[i]-a[i-1]-1)/x;
+    }
+    ant+=(m-a[n]-1)/x;
+    return ant<=k;
+}
+signed main(){
+    std::ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    cin>>m>>n>>k;
+    for(int i=1;i<=n;i++) cin>>a[i];
+    sort(a+1,a+1+n);
+    ll  l=0,r=1e9,best;
+    while(l<=r){
+        ll mid=(l+r)>>1;
+        if(check(mid)){
+            best=mid;
+            r=mid-1;
+        }else{ l=mid+1;}
+    }
+    cout<<best;
+    return 0;
+}
