@@ -1,0 +1,13 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+signed main(){
+    int t,l,r;
+    cin>>t;
+    while(t--){
+        cin>>l>>r;
+        for(int i=1;(l|i)<=r;i<<=1) l=l|i;
+        cout<<l<<"\n";
+    }
+    return 0;
+}
