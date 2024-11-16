@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int N=510;
+ll an1[N][N],an2[N][N];
+
+
+void shunzhen(ll x,ll y,ll r){
+    for(ll i=x-r;i<=x+r;i++){
+        for(ll j=y-r;j<=y+r;j++){
+            an2[i][j]=an1[i][j];
+        }
+    }
+    ll a=x+r,b=y-r;
+    for(ll i=x-r;i<=x+r;i++){
+        for(ll j=y-r;j<=y+r;j++){
+            an1[i][j]=an2[a][b];
+            a--;
+        }
+        a=x+r,b++;
+    }
+}
+
+
+void nizhen(ll x,ll y,ll r){
+    for(ll i=x-r;i<=x+r;i++){
+        for(ll j=y-r;j<=y+r;j++){
+            an2[i][j]=an1[i][j];
+        }
+    }
+    ll a=x-r,b=y+r;
+    for(ll i=x-r;i<=x+r;i++){
+        for(ll j=y-r;j<=y+r;j++){
+            an1[i][j]=an2[a][b];
+            a++;
+        }
+        a=x-r,b--;
+    }
+}
+
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    ll n,m;
+    cin>>n>>m;
+    ll t=1;
+    for(ll i=1;i<=n;i++)
+        for(ll j=1;j<=n;j++)
+            an1[i][j]=t++;
+    ll x,y,r,z;
+    for(ll i=0;i<m;i++){
+        cin>>x>>y>>r>>z;
+        if(z==0) shunzhen(x,y,r);
+        else nizhen(x,y,r);
+    }
+    for(ll i=1;i<=n;i++){
+        for(ll j=1;j<=n;j++) 
+            cout<<an1[i][j]<<" ";
+        cout<<"\n";
+    }
+    return 0;
+}
