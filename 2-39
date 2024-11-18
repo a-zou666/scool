@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+signed main(){
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    ll t;
+    cin>>t;
+    while(t--){
+        string a;
+        cin>>a;
+        for(ll i=0;i<a.size();i++){
+            if(a[i]=='3'){
+                cout<<"31\n";
+                break;
+            }
+            if(a[i]=='1'){
+                cout<<"13\n";
+                break;
+            }
+        }
+    }
+    return 0;
+}
