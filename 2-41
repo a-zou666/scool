@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const ll N=1e6+10;
+struct node{
+    ll num;
+    ll le;
+}stu1[N];
+bool cmp(node a,node b){
+    if(a.le==b.le) return a.num<b.num;
+    return a.le>b.le;
+}
+signed main(){
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    ll t;
+    cin>>t;
+    while(t--){
+        vector<ll>cnt,ans;
+        ll n,k;
+        cin>>n>>k;
+        for(ll i=0;i<n;i++){
+            stu1[i].num=i+1;
+            cin>>stu1[i].le;
+            if(stu1[i].le>k){
+                if(stu1[i].le%k==0) stu1[i].le=k;
+                else stu1[i].le=stu1[i].le%k;
+            }
+        }
+        sort(stu1,stu1+n,cmp);
+        for(ll i=0;i<n;i++){
+            cout<<stu1[i].num<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
