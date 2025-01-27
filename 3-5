@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+struct note{
+    string id;
+    ll x1,x2;
+    bool gb,xb;
+    ll cnt;
+    ll money=0;
+}s;
+struct note a[1000];
+struct note b;
+void solve(){
+    ll n;
+    cin>>n;
+
+    ll sum=0;
+
+    for(ll i=0;i<n;i++){
+        cin>>a[i].id>>a[i].x1>>a[i].x2;
+        char l,r;
+        cin>>l>>r;
+        if(l=='Y') a[i].gb=true;
+        else a[i].gb=false;
+        if(r=='Y') a[i].xb=true;
+        else a[i].xb=false;
+        cin>>a[i].cnt;
+
+        if(a[i].x1>80 && a[i].cnt>=1) a[i].money+=8000;
+        if(a[i].x1>85 && a[i].x2>80) a[i].money+=4000;
+        if(a[i].x1>90) a[i].money+=2000;
+        if(a[i].x1>85 && a[i].xb) a[i].money+=1000;
+        if(a[i].x2>80 && a[i].gb) a[i].money+=850;
+        sum+=a[i].money;
+
+        if(i==0){
+            b.id=a[i].id;
+            b.money=a[i].money;
+        }
+        if(a[i].money>b.money){
+            b.id=a[i].id;
+            b.money=a[i].money;
+        }
+    }
+    cout<<b.id<<"\n"<<b.money<<"\n"<<sum;
+
+}
+
+signed main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    solve();
+}
