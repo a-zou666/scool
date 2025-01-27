@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+// 定义结构体来存储报名号和笔试成绩
+struct note {
+    ll k, s;
+};
+
+// 比较函数：首先按笔试成绩降序排序，如果成绩相同，则按报名号升序排序
+bool cmp(const note &a, const note &b){
+    if(a.s != b.s) return a.s > b.s; 
+    return a.k < b.k;
+}
+
+void solve(){
+    ll n, m;
+    cin >> n >> m;
+    
+    // 读取所有选手的报名号和笔试成绩
+    vector<note> a(n);
+    for(ll i = 0; i < n; i++) cin >> a[i].k >> a[i].s;
+
+    // 按照比较函数排序
+    sort(a.begin(), a.end(), cmp);
+
+    // 计算面试分数线的排名 t = floor(m * 1.5)
+    ll t = (m * 3) / 2;
+
+    // 确保 t 不超过 n
+    t = min(t, n);
+
+    // 确定面试分数线 st
+    ll st = a[t-1].s;
+
+    // 统计实际进入面试的选手人数 cnt
+    ll cnt = 0;
+    for(ll i = 0; i < n; i++) {
+        if(a[i].s >= st) cnt++;
+    }
+
+    // 输出面试分数线和实际人数
+    cout << st << " " << cnt << "\n";
+
+    // 输出所有进入面试的选手，按要求排序
+    for(ll i = 0; i < n; i++) {
+        if(a[i].s >= st){
+            cout << a[i].k << " " << a[i].s << "\n";
+        }
+    }
+}
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    solve();
+    return 0;
+}
