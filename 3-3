@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+ll n,t;
+set<ll>a;
+void solve(){
+    cin>>n;
+    for(ll i=0;i<n;i++) {cin>>t;a.insert(t);}
+    cout<<a.size()<<"\n";
+    for (ll i : a) {
+        cout << i << " ";
+    }
+}
+signed main(){
+    ios::sync_with_stdio(0),cin.tie(0);
+    solve();
+}
