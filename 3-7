@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+void solve(ll n){
+    bool falg=false;
+    while(n){
+        ll t=ll(log2(n));
+        if(falg) cout<<"+";
+        
+        if(t==0) cout<<"2(0)";
+        else if(t==1) cout<<"2";
+        else{
+            cout<<"2(";
+            solve(t);
+            cout<<")";
+        }
+
+        n=n-pow(2,t);
+        falg=true;
+    }
+}
+
+signed main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    ll n;cin>>n;
+    solve(n);
+}
