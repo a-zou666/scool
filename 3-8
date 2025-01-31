@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+char a[1000001];
+void solve(){
+    char ch;
+    long long n,num=0;
+    while(scanf("%c",&ch),ch!=' ')
+        a[++num]=ch;
+    scanf("%lld",&n);
+    while(num<n)
+    {
+        long long i=num;
+        while(n>i*2) i*=2;
+        n-=(i+1);
+        if(n==0) n=i;
+    }
+    printf("%c",a[n]);
+}
+
+signed main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    solve();
+}
