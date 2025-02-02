@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int N=1e5+10;
+void solve(){
+    ll sum,n;
+    ll a[N];
+    cin>>sum>>n;
+    for(ll i=0;i<n;i++) cin>>a[i];
+
+    sort(a,a+n);
+    ll ans=0;
+    ll st=0,sd=n-1;
+    while(st<=sd){
+        if(a[sd]+a[st]<=sum) {ans++;st++;sd--;}
+        else {ans++;sd--;}
+    }
+    cout<<ans;
+}
+
+signed main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    solve();
+}
