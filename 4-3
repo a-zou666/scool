@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+ll a[505][505];
+void solve(){
+    ll n;cin>>n;
+    for(ll i=1;i<=n;i++){
+        for(ll j=i+1;j<=n;j++){
+            cin>>a[i][j];
+            a[j][i]=a[i][j];
+        }
+    }
+
+    ll ans=0;
+
+    for(ll i=1;i<=n;i++){
+        sort(a[i],a[i]+n+1);
+        if(a[i][n-1]>ans) ans=a[i][n-1];
+    }
+    cout<<1<<"\n"<<ans;
+}
+
+signed main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    solve();
+}
