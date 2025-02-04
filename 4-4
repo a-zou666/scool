@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int N=1e4+10;
+ll a[N];
+ll n,m;
+ll ksm(ll b,ll n){
+    ll r=1;
+    while(n){
+        if(n&1) r*=b;
+        b*=b;
+        n=n>>1;
+    }
+    return r;
+}
+void zh(string s){
+    ll ant=s.size();
+    ll j,sum=0,cnt=0;
+    for(ll i=0;i<ant;i++){
+        if(s[i]<'A'){j=ksm(n,ant-i-1);j*=(s[i]-'0');}
+        else{j=ksm(n,ant-i-1);j*=(s[i]-'A'+10);}
+        sum+=j;
+    }
+
+    while(sum>0){
+        a[cnt]=sum%m;
+        cnt++;
+        sum/=m;
+    }
+
+    char x;
+    for(ll i=cnt-1;i>=0;i--){
+        if(a[i]>=10) x=a[i]-10 +'A';
+        else x=a[i]+'0';
+        cout<<x;
+    }
+}
+
+void solve(){
+    string s;
+    cin>>n>>s>>m;
+    if(n==m) cout<<s;
+    else{
+        zh(s);
+    }
+}
+
+signed main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    solve();
+}
