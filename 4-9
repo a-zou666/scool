@@ -1,0 +1,27 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+typedef  long long ll;
+ll n,k;
+const int N=1e7+10;
+ll r[N],c[N];
+void solve(){
+    cin>>n>>k;
+    for(ll i=0;i<k;i++) cin>>r[i]>>c[i];
+
+    sort(r,r+k);sort(c,c+k);
+
+
+    ll cnt1=0,cnt2=0;
+    for(ll i=0;i<k;i++){
+        if(r[i]!=r[i+1]) cnt1++;
+        if(c[i]!=c[i+1]) cnt2++;
+    }
+
+    cout<<n*n-(n-cnt1)*(n-cnt2);
+}
+
+signed main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    solve();
+}
