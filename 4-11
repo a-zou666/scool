@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef  long long ll;
+
+void solve(){
+    ll x,y;
+    cin>>x>>y;
+    ll ans=0;
+    while(x&&y){
+        ll n=min(x,y);
+        if(x==n){
+            ans+=4*(y/n)*n;
+            y%=n;
+        }
+        else if(y==n){
+            ans+=4*(x/n)*n;
+            x%=n;
+        }
+
+
+    }
+    
+    cout<<ans;
+}
+signed main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    solve();
+}
