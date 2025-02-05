@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef  long long ll;
+
+ll n,m;
+string a[100000];
+
+ll cnt1=0,cnt2=0;
+
+ll pd(string x,string y){
+    ll r=0;
+    while(r<x.size() && r<y.size() && x[r]==y[r]){
+        r++;
+    }
+    return r;
+}
+
+void solve(){
+    cin>>n>>m;
+    for(ll i=0;i<n;i++) cin>>a[i];
+    ll l,r;cin>>l>>r;
+
+    sort(a,a+n);
+
+    for(ll i=0;i<n;i++){
+        cnt1+=(a[i].size())*2;
+        cnt2=max(cnt2,(ll)a[i].size());
+
+        if(i!=0) cnt1-=pd(a[i],a[i-1])*2;
+    }
+    cout<<cnt1-cnt2;
+}
+signed main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    // ll t;cin>>t;
+    // while(t--){
+        solve();
+    // }
+    
+}
