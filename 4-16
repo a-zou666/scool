@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef  long long ll;
+
+ll f[8][2]={{0,1},{1,0},{-1,0},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}};
+char a[105][105];
+ll n,mp[105][105],ans=0,m;
+
+void dfs(ll x,ll y){
+    mp[x][y]=1;
+
+    for(ll i=0;i<8;i++){
+        if(a[x+f[i][0]][y+f[i][1]]=='W' && mp[x+f[i][0]][y+f[i][1]]==0){
+            dfs(x+f[i][0],y+f[i][1]);
+        }
+    }
+}
+
+void solve(){
+    cin>>n>>m;
+    for(ll i=1;i<=n;i++){
+        for(ll j=1;j<=m;j++) cin>>a[i][j];
+    }
+
+    for(ll i=1;i<=n;i++){
+        for(ll j=1;j<=m;j++){
+            if(a[i][j]=='W'&& mp[i][j]==0){
+                dfs(i,j);
+                ans++;
+            }
+        }
+    }
+    cout<<ans;
+}
+signed main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    // ll t;cin>>t;
+    // while(t--){
+        solve();
+    // }
+    
+}
