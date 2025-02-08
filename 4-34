@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef  long long ll;
+
+ll n,m;
+string a,b;
+ll ans,sum;
+
+void solve(){
+    // map<char,ll>mp1,mp2;
+    cin>>n>>m>>a>>b;
+    // a=' '+a;b=' '+b;
+    ans=0,sum=0;
+    // sum=abs(n-m);
+
+    if(n<m) {swap(a,b);swap(n,m);}
+
+    // for(ll i=0;i<n;i++) mp1[a[i]]++;
+    // for(ll i=0;i<m;i++) mp2[b[i]]++;
+
+
+    // for(auto i : a){
+    //     if(mp1[i]==0 || mp1[i]>1) ans++;
+    //     mp2[i]--;
+    //     // cout<<i<<" ";
+    // }
+
+    // for(char i='a';i<='z';i++){
+
+    // }
+
+    map<char,ll>mp;
+    for(auto i: a) mp[i]++;
+    for(auto i: b) {
+        if(mp[i]) mp[i]--;
+        else sum++;
+    }
+
+    for(auto [i,j] :mp) if(j&1) ans++;
+
+    if(sum>=ans) ans=sum;
+    else{
+        ans-=sum;
+        ans/=2;
+        ans+=sum;
+    }
+    cout<<ans<<"\n";
+
+}
+signed main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    ll T;
+    cin>>T;
+    while(T--){
+        solve();
+    }
+}
