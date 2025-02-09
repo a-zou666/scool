@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef  long long ll;
+const int N=1e6+10;
+ll n;
+map<ll,ll>mp1,mp2,mp3;
+
+void solve(){
+    cin>>n;ll x;
+    for(ll i=0;i<n;i++) cin>>mp1[i+1];//mp1[i]=p
+    for(ll i=0;i<n;i++) {cin>>x;mp2[x]=i+1;mp3[i+1]=x;}//mp2[q]=i
+
+    for(ll i=1;i<=n;i++){
+        x=mp2[i];
+        ll y=mp1[x];
+        ll z=mp3[y];
+        cout<<z<<" ";
+    }
+
+
+}
+signed main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    // ll T;
+    // cin>>T;
+    // while(T--){
+        solve();
+    // }
+}
